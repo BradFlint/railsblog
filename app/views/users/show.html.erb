@@ -1,0 +1,20 @@
+<h1>Users#show</h1>
+
+<div align= center id="profilename">
+	Welcome, <%= @user.fname %>
+	<%= @user.lname %>
+	<br>
+</div>
+<div id="profileflash">
+	<%= flash[:notice] if flash[:notice] %>
+	<br>
+</div>
+<div align= center id="profilebuttons">
+	<%= link_to('Edit', controller: 'users', action: 'edit') %>
+	<br>
+	<%= link_to('Logout', controller: 'sessions', action: 'destroy') %>
+	<br>
+	<%= link_to('Delete', "/users/#{@user.id}", :method => :delete) %>
+	<br>
+</div>
+`

@@ -1,0 +1,27 @@
+<h1>Users#index</h1>
+
+<div align="center" id="editgreet">
+	<h1>New to inferno? Create your account here</h1>
+</div>
+
+<div id="createacctform">
+	<%= form_for @user do |f| %>
+		<%= f.label :fname, "First Name"%>
+		<%= f.text_field :fname%>
+		<br>
+		<%= f.label :lname, "Last Name"%>
+		<%= f.text_field :lname %>
+		<br>
+		<%= f.label :username, "User Name"%>
+		<%= f.text_field :username %>
+		<br>
+		<%= f.label :email, "Email"%>
+		<%= f.text_field :email %>
+		<br>
+		<%= f.label :password, "Password"%>
+		<%= f.text_field :password %>
+		<br>
+		<br>
+		<%= f.submit%>
+	<% end %>
+</div>

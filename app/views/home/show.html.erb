@@ -1,0 +1,12 @@
+<h1>Home#show</h1>
+<p>Find me in app/views/home/show.html.erb</p>
+
+<%= form_tag("/search", method: "post") do %>   
+	<%= label_tag(:query, "Search:") %>   
+	<%= text_field_tag(:query) %>   
+	<%= submit_tag("Submit") %> 
+<% end %>
+
+<% @users.each do |user| %>
+	<p><%= user.fname %> <%= user.lname %></p>
+<% end %>
