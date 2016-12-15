@@ -1,2 +1,36 @@
-<h1>Users#new</h1>
+
 <p>Find me in app/views/users/new.html.erb</p>
+<div align="center" id="editgreet">
+	<h1>New to inferno? Create your account here</h1>
+</div>
+<!-- form to create a new user account -->
+<div id="createacctform">
+	<%= form_for @user do |f| %>
+		<%= f.label :fname, "First Name"%>
+		<%= f.text_field :fname%>
+		<br>
+		<%= f.label :lname, "Last Name"%>
+		<%= f.text_field :lname %>
+		<br>
+		<%= f.label :username, "User Name"%>
+		<%= f.text_field :username %>
+		<br>
+		<%= f.label :email, "Email"%>
+		<%= f.text_field :email %>
+		<br>
+		<%= f.label :password, "Password"%>
+		<%= f.text_field :password %>
+		<br>
+		<br>
+		<%= f.submit%>
+	<% end %>
+</div>
+<!-- if there are errors when creating account the errors are displayed -->
+<% if @user.errors.full_messages.any? %>
+	<ul>
+		<% @user.errors.full_messages.each do |error_message| %>
+			<li><%= error_message %></li> <br />
+		<% end %>
+	</ul>
+<% end %>
+<%= image_tag('flame3.png') %>

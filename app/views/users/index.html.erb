@@ -1,27 +1,26 @@
+
+<!-- website navigation links  -->
+<%= link_to('New Post', new_post_path) %>
+<%= link_to('Logout', controller: 'sessions', action: 'destroy') %>
+<%= link_to('New Post', new_post_path) %>
+
 <h1>Users#index</h1>
 
-<div align="center" id="editgreet">
-	<h1>New to inferno? Create your account here</h1>
+<div align= center id="siteusers">
+	<h1>All Users</h1>
+</div>
+<!-- list of all the users -->
+<div id="username">
+<% @users.each do |user| %>
+	<hr>
+	<%= user.fname %>
+	<%= user.lname %>
+	
+	<%= form_for UserFriend.new do |f| %>
+	 	<%= hidden_field_tag('friend_id', user.id) %>
+	 	<%= f.submit %> 
+	<% end %>
+<% end %>
 </div>
 
-<div id="createacctform">
-	<%= form_for @user do |f| %>
-		<%= f.label :fname, "First Name"%>
-		<%= f.text_field :fname%>
-		<br>
-		<%= f.label :lname, "Last Name"%>
-		<%= f.text_field :lname %>
-		<br>
-		<%= f.label :username, "User Name"%>
-		<%= f.text_field :username %>
-		<br>
-		<%= f.label :email, "Email"%>
-		<%= f.text_field :email %>
-		<br>
-		<%= f.label :password, "Password"%>
-		<%= f.text_field :password %>
-		<br>
-		<br>
-		<%= f.submit%>
-	<% end %>
-</div>
+<%= image_tag('flame3.png') %>

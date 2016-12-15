@@ -1,20 +1,43 @@
 <h1>Users#show</h1>
 
-<div align= center id="profilename">
-	Welcome, <%= @user.fname %>
+<div align= center id="myprofilepage">
+<h1>MyProfile</h1>
+</div>
+<!-- outputs the current user name -->
+<div align= center id="profilename">  
+	<%= @user.fname %>
 	<%= @user.lname %>
 	<br>
 </div>
+
+<!-- buttons to navigate throughout site -->
+<div align= center id="profilebuttons">
+	<%= link_to('Edit Account', controller: 'users', action: 'edit') %>
+	<br>
+	<%= link_to('Delete Account', "/users/#{@user.id}", :method => :delete) %>
+	<br>
+	<%= link_to('New Post', new_post_path) %>
+	<br>
+	<%= link_to('All Posts', posts_path) %>
+	<br>
+	<%= link_to('Logout', controller: 'sessions', action: 'destroy') %>
+</div>
+<!-- outputs a list of friends, or users that the current user is following -->
+<!-- link to unfollow friends and link to visit a friend's profile page -->
+<div id="myfriends">
+<h1>My Friends</h1>
+<% @user.user_friends.each do |friend| %>
+	<h2><%= User.find(friend.friend_id).fname %>
+	<%= User.find(friend.friend_id).lname %></h2>
+	<%= link_to('Unfollow', user_friend_path(friend), method: :delete) %>
+	<%= link_to('Visit Page', "#{request.base_url}/users/#{friend.friend_id}") %>
+<% end %>
+</div>
+
 <div id="profileflash">
 	<%= flash[:notice] if flash[:notice] %>
 	<br>
 </div>
-<div align= center id="profilebuttons">
-	<%= link_to('Edit', controller: 'users', action: 'edit') %>
-	<br>
-	<%= link_to('Logout', controller: 'sessions', action: 'destroy') %>
-	<br>
-	<%= link_to('Delete', "/users/#{@user.id}", :method => :delete) %>
-	<br>
-</div>
-`
+
+
+<%= image_tag('flame3.png') %>

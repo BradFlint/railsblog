@@ -1,2 +1,17 @@
+<!-- site navigation links -->
+<%= link_to('Logout', controller: 'sessions', action: 'destroy') %>
+<%= link_to('New Post', new_post_path) %>
+
 <h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+
+<div align= center id="allpostpage">
+<h1>All Posts</h1>
+</div>	
+<!-- all of the posts with title and time stamp of when post was created -->
+<% @posts.each do |post| %>
+	<div class="post_wrapper">
+		<h2 class="title"><%= link_to post.title, post %></h2>
+		<p class="date"><%= post.created_at.strftime("%B, %d, %Y") %></p>
+		<hr>
+	</div>
+<% end %>

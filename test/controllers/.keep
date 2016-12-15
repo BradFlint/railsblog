@@ -1,0 +1,10 @@
+<% if @user %>
+      <%= link_to('Profile', "#{request.base_url}/users/#{@user.id}") %>
+      <%= link_to('All Posts', "#{request.base_url}/posts/:id#{@user.id}") %>
+      <%= link_to('Edit Account', "#{request.base_url}/users/:id/edit#{@user.id}") %>
+      <%= link_to('All Users', "#{request.base_url}/users/:id/#{@user.id}",) %>
+      <%= link_to('Log In', "#{request.base_url}/login/#{@user.id}",) %>
+    <% else %>
+      <%= link_to('Create Account', "#{request.base_url}/users/#{@user.id}") %>
+      <%= link_to('Log Out', "#{request.base_url}/logout/#{@user.id}",) %>
+		<% end %>

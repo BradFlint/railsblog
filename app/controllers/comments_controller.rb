@@ -3,6 +3,10 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create(params[:comment].permit(:name, :body))
+
+    redirect_to post_path(@post)
   end
 
   def new
@@ -18,5 +22,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:post_id]) 
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+
+    redirect_to post_path(@post)
+  end
+
+  def comments_params
+    params.require(:post).permit(:message, :user_id, :title, :body, :name)
   end
 end

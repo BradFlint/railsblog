@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :users
-  resources :posts
+  resources :users 
+  resources :posts 
+
   resources :user_friends
   resources :comments
+  root "users#new"
 
-  get 'login'=> 'sessions#new'
+  get '/login'=> 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 

@@ -1,21 +1,21 @@
 class UsersController < ApplicationController
   def index
-    @user = User.new
+    @users = User.all
+   # @users = User.has_fname
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id 
-        ##flash[:notice] = "Your account was created successfully."##
         redirect_to user_path @user
       else
-        ##flash[:alert] = "There was a problem saving your account."##
-        redirect_to new_user_path
+        render 'new'
     end
   end
-
+  
   def new
+    @user = User.new
   end
 
   def edit
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id]).update_attributes(params[:user])
+    @user = User.find(params[:id]).update_attributes(user_params)
     redirect_to user_path
   end
 
@@ -35,4 +35,13 @@ class UsersController < ApplicationController
     current_user.destroy
     redirect_to users_path
   end
+
+  private
+  #{"utf8"=> "/", "user" => {"fname" => "Brad"}}
+  def user_params
+    params.require(:user).permit(:fname, :lname, :email, :password, :username)
+  end
 end
+
+
+

@@ -1,2 +1,12 @@
-<h1>Posts#new</h1>
+<!-- site navigation links  -->
+<%= link_to('All Posts', posts_path) %>
+<%= link_to('Logout', controller: 'sessions', action: 'destroy') %>
 <p>Find me in app/views/posts/new.html.erb</p>
+
+<div align= center id="newpostpage">
+	<h1>New Post</h1>
+</div>
+<!-- form that allows the current user to create a post -->
+<div id="postcontents">		
+	<%= render 'form' %>
+</div>

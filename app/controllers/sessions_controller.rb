@@ -1,10 +1,11 @@
 class SessionsController < ApplicationController
   def new
+    @user = current_user
   end
 
   def create
   	puts "These are my params: #{params.inspect}"
-  	@user = User.where(fname: params[:fname], password: params[:password]).first
+  	@user = User.where(username: params[:username], password: params[:password]).first
   	puts "did we get a user"
   	if @user
   		session[:user_id] = @user.id
@@ -18,4 +19,5 @@ class SessionsController < ApplicationController
   	session[:user_id] = nil
   	redirect_to login_path 
   end
+
 end

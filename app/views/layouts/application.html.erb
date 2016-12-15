@@ -4,23 +4,37 @@
     <title>Railsblog</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-   
   
   <header align= center id="header">
 	<h1> enferno.</h1>
-	<div id="headbuttons">
-		<%= link_to('Login', controller: 'sessions', action: 'new') %>
-		<%= link_to('Logout', controller: 'sessions', action: 'destroy') %>
+
+<!-- logo image -->
 		<div class="logo">
 			<img src="<%= request.base_url%>/images/flame3.png">
 		</div>
 	</div>
+	
   </header>
+  <!-- link to home page -->
+  <%= link_to "Home", root_path %>
 
   <body id="body">
+
+    	<% flash.each do |name, msg| %>
+    		<%= content_tag(:div, msg, class: "alert") %>
+    	<% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
+
+
+
+
+
+
+
+
