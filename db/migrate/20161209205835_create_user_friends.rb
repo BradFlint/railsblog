@@ -5,9 +5,9 @@ class CreateUserFriends < ActiveRecord::Migration[5.0]
       t.string :friend_id
 
       t.timestamps
+    end
       add_index :user_friends, :user_id
       add_index :user_friends, :friend_id
       add_index :user_friends, [:user_id, :friend_id], unique: true
-    end
   end
 end
